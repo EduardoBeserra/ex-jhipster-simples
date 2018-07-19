@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "dataVencimento",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "preco",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180719001943",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "produto",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

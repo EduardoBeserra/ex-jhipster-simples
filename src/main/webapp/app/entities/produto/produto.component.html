@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Produtos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-produto" [routerLink]="['/produto/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Produto
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="produtos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nome"><span>Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descricao"><span>Descricao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dataVencimento"><span>Data Vencimento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="preco"><span>Preco</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let produto of produtos ;trackBy: trackId">
+                <td><a [routerLink]="['/produto', produto.id, 'view' ]">{{produto.id}}</a></td>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>{{produto.dataVencimento | date:'mediumDate'}}</td>
+                <td>{{produto.preco}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/produto', produto.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/produto', produto.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'produto/'+ produto.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
