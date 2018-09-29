@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "conteudo",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180724220814",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "parametro",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
